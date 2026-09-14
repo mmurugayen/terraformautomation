@@ -1,5 +1,7 @@
 # Documentation validation
 
+> Integration update (2026-09-14): this document retains the original source-review evidence below. Later default-branch diagnostics and maintenance are retained; see [INTEGRATION.md](INTEGRATION.md) for the reconciled revision and current validation limits.
+
 Reviewed 2026-09-14 against `a484a3bb7dc2ec47640c1cdaef01eef4a3128bfc`.
 
 | Check | Result |

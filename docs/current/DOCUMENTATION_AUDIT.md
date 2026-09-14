@@ -1,5 +1,7 @@
 # Documentation audit: terraformautomation
 
+> Integration update (2026-09-14): this document retains the original source-review evidence below. Later default-branch diagnostics and maintenance are retained; see [INTEGRATION.md](INTEGRATION.md) for the reconciled revision and current validation limits.
+
 Reviewed **2026-09-14**, default branch `dev`, commit [`a484a3bb7dc2`](https://github.com/mmurugayen/terraformautomation/commit/a484a3bb7dc2ec47640c1cdaef01eef4a3128bfc).
 
 Inventory: **1 existing text documents**, **0 Office/PDF artifacts**, and **0 associated documentation assets**. See the [complete machine-readable inventory](documentation-inventory.json) for original and reviewed Git blob hashes.
