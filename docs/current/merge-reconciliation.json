@@ -1,0 +1,24 @@
+{
+  "date": "2026-09-14",
+  "repository": "mmurugayen/terraformautomation",
+  "pr": 2,
+  "documentation_head": "c3424ef2f19003c302b1b5eb67503c0b2e3c9f3b",
+  "integrated_base": "6bccd25d259b89453915c76d70c235eb96af3546",
+  "preserved_non_document_blobs": 12,
+  "runtime_source_changed": false,
+  "checks": [
+    {
+      "command": "python scripts/check_observability_coverage.py",
+      "exit_code": 0,
+      "output": "{\"feature\": \"GYS-OBS-001\", \"product\": \"terraformautomation\", \"source_files\": 4, \"provenance\": \"matched\", \"status\": \"passed\"}",
+      "stderr": ""
+    }
+  ],
+  "limits": [
+    "Current-head CI and normal merge remain required.",
+    "Original documentation inventory and validation are retained as historical evidence."
+  ],
+  "local_file_links_checked": 16,
+  "errors": [],
+  "status": "PASS"
+}

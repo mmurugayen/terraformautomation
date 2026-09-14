@@ -1,0 +1,60 @@
+{
+  "review_date": "2026-09-14",
+  "repository": "mmurugayen/terraformautomation",
+  "default_branch": "dev",
+  "reviewed_commit": "6bccd25d259b89453915c76d70c235eb96af3546",
+  "text_documents": 3,
+  "office_pdf_artifacts": 0,
+  "method": "Original source blobs verified by Git hash; text navigation scanned; current entry points, dependencies, setup and architecture compared with selected implementation source. Historical validation results and Office/PDF contents are not recertified.",
+  "records": [
+    {
+      "path": "README.md",
+      "original_blob_sha": "a4eb6eb6d4b415e180b4fb8be2d06e529bf7eeda",
+      "reviewed_blob_sha": "0bdd98bdf23eb5c308355283817c0e1974dc4e11",
+      "classification": "Updated current navigation or source contract",
+      "relative_link_findings": [],
+      "binary_content_revalidated": null
+    },
+    {
+      "path": "docs/OBSERVABILITY_COVERAGE.json",
+      "original_blob_sha": "3718a85fd44e496efd92d2609bda9ef3bbc86ef8",
+      "reviewed_blob_sha": "3718a85fd44e496efd92d2609bda9ef3bbc86ef8",
+      "classification": "Reference guide/asset; inventory and navigation checked",
+      "relative_link_findings": [],
+      "binary_content_revalidated": null
+    },
+    {
+      "path": "docs/OBSERVABILITY_MCP.md",
+      "original_blob_sha": "0808d985411f92971899ba5c49b4e6e7a16da50a",
+      "reviewed_blob_sha": "0808d985411f92971899ba5c49b4e6e7a16da50a",
+      "classification": "Reference guide/asset; inventory and navigation checked",
+      "relative_link_findings": [],
+      "binary_content_revalidated": null
+    },
+    {
+      "path": "docs/OBSERVABILITY_VALIDATION.json",
+      "original_blob_sha": "a266e7d69f88bec2c90fab072c25197e66542348",
+      "reviewed_blob_sha": "a266e7d69f88bec2c90fab072c25197e66542348",
+      "classification": "Reference guide/asset; inventory and navigation checked",
+      "relative_link_findings": [],
+      "binary_content_revalidated": null
+    },
+    {
+      "path": "docs/product/backlog/GYS-OBS-001.json",
+      "original_blob_sha": "2c731118ee889c5d4d7f18741c55f13169c80593",
+      "reviewed_blob_sha": "2c731118ee889c5d4d7f18741c55f13169c80593",
+      "classification": "Reference guide/asset; inventory and navigation checked",
+      "relative_link_findings": [],
+      "binary_content_revalidated": null
+    },
+    {
+      "path": "docs/product/backlog/GYS-OBS-001.md",
+      "original_blob_sha": "bbe038ec1a6bc4e26b56cf078dabbc9aa782947c",
+      "reviewed_blob_sha": "bbe038ec1a6bc4e26b56cf078dabbc9aa782947c",
+      "classification": "Reference guide/asset; inventory and navigation checked",
+      "relative_link_findings": [],
+      "binary_content_revalidated": null
+    }
+  ],
+  "relative_link_findings": []
+}
