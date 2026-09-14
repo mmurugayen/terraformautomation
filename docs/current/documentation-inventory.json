@@ -2,59 +2,150 @@
   "review_date": "2026-09-14",
   "repository": "mmurugayen/terraformautomation",
   "default_branch": "dev",
-  "reviewed_commit": "6bccd25d259b89453915c76d70c235eb96af3546",
-  "text_documents": 3,
+  "reviewed_commit": "fc5938592c347e09e6fbf684bcea3d7affd1d490",
+  "text_documents": 9,
   "office_pdf_artifacts": 0,
-  "method": "Original source blobs verified by Git hash; text navigation scanned; current entry points, dependencies, setup and architecture compared with selected implementation source. Historical validation results and Office/PDF contents are not recertified.",
+  "method": "Current entry points, component ownership, deployment dependencies and workflow source contracts reviewed; historical reports and all individual design claims are not recertified.",
   "records": [
     {
       "path": "README.md",
-      "original_blob_sha": "a4eb6eb6d4b415e180b4fb8be2d06e529bf7eeda",
-      "reviewed_blob_sha": "0bdd98bdf23eb5c308355283817c0e1974dc4e11",
-      "classification": "Updated current navigation or source contract",
-      "relative_link_findings": [],
-      "binary_content_revalidated": null
+      "original_blob_sha": "0bdd98bdf23eb5c308355283817c0e1974dc4e11",
+      "reviewed_blob_sha": "85ff6b43a957c3c52a613e2f1591fe5766cb6511",
+      "classification": "Current guide/diagram updated and source-boundary reviewed",
+      "relative_link_findings": []
     },
     {
       "path": "docs/OBSERVABILITY_COVERAGE.json",
       "original_blob_sha": "3718a85fd44e496efd92d2609bda9ef3bbc86ef8",
       "reviewed_blob_sha": "3718a85fd44e496efd92d2609bda9ef3bbc86ef8",
-      "classification": "Reference guide/asset; inventory and navigation checked",
-      "relative_link_findings": [],
-      "binary_content_revalidated": null
+      "classification": "Original dated/reference content retained; inventory/navigation checked",
+      "relative_link_findings": []
     },
     {
       "path": "docs/OBSERVABILITY_MCP.md",
       "original_blob_sha": "0808d985411f92971899ba5c49b4e6e7a16da50a",
       "reviewed_blob_sha": "0808d985411f92971899ba5c49b4e6e7a16da50a",
-      "classification": "Reference guide/asset; inventory and navigation checked",
-      "relative_link_findings": [],
-      "binary_content_revalidated": null
+      "classification": "Original dated/reference content retained; inventory/navigation checked",
+      "relative_link_findings": []
     },
     {
       "path": "docs/OBSERVABILITY_VALIDATION.json",
       "original_blob_sha": "a266e7d69f88bec2c90fab072c25197e66542348",
       "reviewed_blob_sha": "a266e7d69f88bec2c90fab072c25197e66542348",
-      "classification": "Reference guide/asset; inventory and navigation checked",
-      "relative_link_findings": [],
-      "binary_content_revalidated": null
+      "classification": "Original dated/reference content retained; inventory/navigation checked",
+      "relative_link_findings": []
+    },
+    {
+      "path": "docs/current/ARCHITECTURE.md",
+      "original_blob_sha": "18ddd72f52d94b189683288dd237b4b00db342d5",
+      "reviewed_blob_sha": "22cd2b6445d474822ada801e68060e6b061898c7",
+      "classification": "Current guide/diagram updated and source-boundary reviewed",
+      "relative_link_findings": []
+    },
+    {
+      "path": "docs/current/DOCUMENTATION_AUDIT.md",
+      "original_blob_sha": "7d89c7214c5e57f801f700b7a0f20e1c527cbaba",
+      "reviewed_blob_sha": "2e0ae02c592386d55dfb751dd8c5a97cc071bf82",
+      "classification": "Current guide/diagram updated and source-boundary reviewed",
+      "relative_link_findings": []
+    },
+    {
+      "path": "docs/current/INTEGRATION.md",
+      "original_blob_sha": "30814abec4ff11b10dc22507ebc6f286fc79eca3",
+      "reviewed_blob_sha": "30814abec4ff11b10dc22507ebc6f286fc79eca3",
+      "classification": "Original dated/reference content retained; inventory/navigation checked",
+      "relative_link_findings": []
+    },
+    {
+      "path": "docs/current/README.md",
+      "original_blob_sha": "a27a231da47900240f236dbfbead070a9b8c895e",
+      "reviewed_blob_sha": "9ddc8f2636718cbf0e320940d43ce55e17ed1234",
+      "classification": "Current guide/diagram updated and source-boundary reviewed",
+      "relative_link_findings": []
+    },
+    {
+      "path": "docs/current/VALIDATION.md",
+      "original_blob_sha": "b269fd453ce1ccdaee762fd2d218a99f1250532a",
+      "reviewed_blob_sha": "5fcf0a03dbb3f4733340e9c64d4a6d3f071cffdd",
+      "classification": "Current guide/diagram updated and source-boundary reviewed",
+      "relative_link_findings": []
+    },
+    {
+      "path": "docs/current/WORKFLOWS.md",
+      "original_blob_sha": "c0d4e64f370cb1bc1f35c0534a84d53faea22d25",
+      "reviewed_blob_sha": "7ab9810f762c5e44be6559555c5c965f7df50b56",
+      "classification": "Current guide/diagram updated and source-boundary reviewed",
+      "relative_link_findings": []
+    },
+    {
+      "path": "docs/current/diagrams/diagrams.json",
+      "original_blob_sha": "5c9bbeec6db264d2b386a5f9d2df2438c7379196",
+      "reviewed_blob_sha": "30700840ed8967825b279c379329c50139fb2981",
+      "classification": "Current guide/diagram updated and source-boundary reviewed",
+      "relative_link_findings": []
+    },
+    {
+      "path": "docs/current/diagrams/observability-architecture.svg",
+      "original_blob_sha": "ef7d41a66de800abf87492ae043d633139511f98",
+      "reviewed_blob_sha": "ce8e1f4948e19ae3502ed4aaf5e59ed7bb937835",
+      "classification": "Current guide/diagram updated and source-boundary reviewed",
+      "relative_link_findings": []
+    },
+    {
+      "path": "docs/current/diagrams/observability-workflow.svg",
+      "original_blob_sha": "410632d46023ee963a76608c539cb01a029bc541",
+      "reviewed_blob_sha": "180054ff218afff51e747010a658db2825be22ae",
+      "classification": "Current guide/diagram updated and source-boundary reviewed",
+      "relative_link_findings": []
+    },
+    {
+      "path": "docs/current/diagrams/render.py",
+      "original_blob_sha": "3ee443334af94f6ce34b225d916dce37ee5e31ad",
+      "reviewed_blob_sha": "b1306306878bdaab58a86efff722e1fd49072f90",
+      "classification": "Current guide/diagram updated and source-boundary reviewed",
+      "relative_link_findings": []
+    },
+    {
+      "path": "docs/current/documentation-inventory.json",
+      "original_blob_sha": "e799d5c34d171a688d96b24f61bd16e581e735f1",
+      "reviewed_blob_sha": null,
+      "classification": "Generated inventory; current hash omitted to avoid self-reference",
+      "relative_link_findings": []
+    },
+    {
+      "path": "docs/current/merge-reconciliation.json",
+      "original_blob_sha": "a4095a789653101294c303b187d086b3712ce37e",
+      "reviewed_blob_sha": "a4095a789653101294c303b187d086b3712ce37e",
+      "classification": "Original dated/reference content retained; inventory/navigation checked",
+      "relative_link_findings": []
+    },
+    {
+      "path": "docs/current/refresh-validation.json",
+      "original_blob_sha": null,
+      "reviewed_blob_sha": "03cff35cfe2d3019f3b6fdbd0ccb65e0c22920bf",
+      "classification": "Current guide/diagram updated and source-boundary reviewed",
+      "relative_link_findings": []
+    },
+    {
+      "path": "docs/current/validation.json",
+      "original_blob_sha": "ec79b7753a41212dc3287263efc3aee28a1925eb",
+      "reviewed_blob_sha": "ec79b7753a41212dc3287263efc3aee28a1925eb",
+      "classification": "Original dated/reference content retained; inventory/navigation checked",
+      "relative_link_findings": []
     },
     {
       "path": "docs/product/backlog/GYS-OBS-001.json",
       "original_blob_sha": "2c731118ee889c5d4d7f18741c55f13169c80593",
       "reviewed_blob_sha": "2c731118ee889c5d4d7f18741c55f13169c80593",
-      "classification": "Reference guide/asset; inventory and navigation checked",
-      "relative_link_findings": [],
-      "binary_content_revalidated": null
+      "classification": "Original dated/reference content retained; inventory/navigation checked",
+      "relative_link_findings": []
     },
     {
       "path": "docs/product/backlog/GYS-OBS-001.md",
       "original_blob_sha": "bbe038ec1a6bc4e26b56cf078dabbc9aa782947c",
       "reviewed_blob_sha": "bbe038ec1a6bc4e26b56cf078dabbc9aa782947c",
-      "classification": "Reference guide/asset; inventory and navigation checked",
-      "relative_link_findings": [],
-      "binary_content_revalidated": null
+      "classification": "Original dated/reference content retained; inventory/navigation checked",
+      "relative_link_findings": []
     }
-  ],
-  "relative_link_findings": []
+  ]
 }

@@ -1,0 +1,29 @@
+{
+  "review_date": "2026-09-14",
+  "repository": "mmurugayen/terraformautomation",
+  "default_branch": "dev",
+  "reviewed_source_commit": "fc5938592c347e09e6fbf684bcea3d7affd1d490",
+  "previous_review_commit": "6bccd25d259b89453915c76d70c235eb96af3546",
+  "comparison_status": "ahead",
+  "tracked_files": 31,
+  "text_documents": 9,
+  "office_pdf_artifacts": 0,
+  "diagram_count": 2,
+  "architecture_diagrams": 1,
+  "workflow_diagrams": 1,
+  "relative_targets_checked": 38,
+  "navigation_findings": [],
+  "checks": [
+    {
+      "command": "python docs/current/diagrams/render.py --check",
+      "exit_code": 0,
+      "output": "Checked 2 diagrams"
+    }
+  ],
+  "source_delta_paths": [],
+  "site_runtime_tests": "not_run_documentation_only",
+  "historical_documents": "inventory and navigation checked; original dates and historical acceptance retained",
+  "review_limit": "Current entry points, component ownership, deployment dependencies and workflow source contracts reviewed; historical reports and all individual design claims are not recertified.",
+  "diagram_rasterization": "PASS: all repository SVG diagrams rendered to PNG",
+  "changed_scope": "README and docs only; runtime files and dependency pins unchanged"
+}
