@@ -1,0 +1,20 @@
+{
+  "review_date": "2026-09-14",
+  "repository": "mmurugayen/terraformautomation",
+  "default_branch": "dev",
+  "reviewed_commit": "a484a3bb7dc2ec47640c1cdaef01eef4a3128bfc",
+  "text_documents": 1,
+  "office_pdf_artifacts": 0,
+  "method": "Original source blobs verified by Git hash; text navigation scanned; current entry points, dependencies, setup and architecture compared with selected implementation source. Historical validation results and Office/PDF contents are not recertified.",
+  "records": [
+    {
+      "path": "README.md",
+      "original_blob_sha": "b1429467103d8157c1dccda70a9d4fc56f72aa20",
+      "reviewed_blob_sha": "f921bc02ffc3e98fab26e7cc6125763614d535a6",
+      "classification": "Updated current navigation or source contract",
+      "relative_link_findings": [],
+      "binary_content_revalidated": null
+    }
+  ],
+  "relative_link_findings": []
+}
