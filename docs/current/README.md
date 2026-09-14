@@ -2,7 +2,7 @@
 
 Last source review: **2026-09-14**, default branch `dev`, commit [`fc5938592c34`](https://github.com/mmurugayen/terraformautomation/commit/fc5938592c347e09e6fbf684bcea3d7affd1d490). This records a documentation review of the linked source snapshot.
 
-Reviewed 2026-09-14 against `6bccd25d259b89453915c76d70c235eb96af3546`. The source contains a diagnostic utility; no domain product or Terraform resources are declared.
+The source contains a diagnostic utility; no domain product or Terraform resources are declared.
 
 - [Architecture](ARCHITECTURE.md)
 - [Workflow](WORKFLOWS.md)
