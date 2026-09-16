@@ -25,6 +25,7 @@ jobs:
       - name: Exercise MCP transport, privacy and operation semantics
         run: |
           python3 -m unittest discover -s tests -p 'test_observability_mcp.py' -v
+          python3 -m unittest discover -s tests -p 'test_recovery_identity.py' -v
           python3 -m unittest discover -s tests -p 'test_operation_tracing.py' -v
       - name: Exercise browser HTTP diagnostics when present
         run: |

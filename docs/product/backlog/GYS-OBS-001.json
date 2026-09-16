@@ -41,5 +41,14 @@
   ],
   "learning": "operator-confirmed, server-verified resolution memory",
   "release_gate": "Required repository CI/review plus real deployment qualification",
-  "automatic_fix_guarantee": false
+  "automatic_fix_guarantee": false,
+  "recovery_identity_increment": {
+    "implementation": [
+      "scripts/gysam_observability.py",
+      "tests/test_recovery_identity.py"
+    ],
+    "evidence": "docs/validation/recovery-identity-2026-09-16.json",
+    "status": "source_implemented_qualification_pending",
+    "remaining": "Required CI for the proposed revision and configured live-backend qualification; parent acceptance remains unchanged."
+  }
 }
