@@ -59,7 +59,7 @@
     "canonical_repository": "mmurugayen/gysam-platform",
     "reviewed_reader_commit": "1eaf5fd77721e8d226738d9c25d933e143168b52",
     "canonical_pull_request": "https://github.com/mmurugayen/gysam-platform/pull/47",
-    "canonical_commit": "c2aade3bd28bd2d168763731cda21354b89ecb1f",
+    "canonical_commit": "aa6dab4c5abe621e8abed7d96a680680d9f0fe7a",
     "consumer_merge_requires_canonical_merge": true,
     "copied_verbatim": [
       "scripts/gysam_observability.py",

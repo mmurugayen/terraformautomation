@@ -4,7 +4,7 @@
   "repository": "mmurugayen/terraformautomation",
   "candidate_parent": "678a2c4ee8a50797df66cf5a8c8d6d8ff2ade75d",
   "canonical_repository": "mmurugayen/gysam-platform",
-  "canonical_commit": "c2aade3bd28bd2d168763731cda21354b89ecb1f",
+  "canonical_commit": "aa6dab4c5abe621e8abed7d96a680680d9f0fe7a",
   "canonical_pull_request": "https://github.com/mmurugayen/gysam-platform/pull/47",
   "reviewed_reader_commit": "1eaf5fd77721e8d226738d9c25d933e143168b52",
   "consumer_merge_requires_canonical_merge": true,
