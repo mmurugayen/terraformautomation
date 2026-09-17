@@ -9,3 +9,5 @@ Search configured logs by correlation identifier, inspect truncated/unavailable 
 [Architecture](ARCHITECTURE.md) · [Tool arguments and operational limits](../OBSERVABILITY_MCP.md)
 
 Before dispatch, recovery validates the retrieved plan ID and recognized state. A successful HTTP apply response is accepted only when its plan ID and target exactly match the approved plan and its state is recognized. Malformed or mismatched apply receipts return `backend_outcome_unknown`; reconcile the original plan without automatic replay. See [recovery receipt integrity](RECOVERY_IDENTITY.md).
+
+The optional shared Python diagnostic helper emits one timed terminal event per observed operation. Interrupted stderr writes are counted without storing payloads; a later successful write starts a complete JSON frame, reports a bounded unscoped recovery marker and then emits the current event. [Diagnostic terminal and recovery contract](DIAGNOSTIC_TERMINAL_SINK.md) documents installation, collection and validation limits.

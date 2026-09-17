@@ -18,3 +18,5 @@ This component map shows the diagnostic utility implemented in this repository. 
 The source example does not establish a running backend. Recovery requires a compatible backend and its migration 017, approved aliases and valid credentials. Local searches remain bounded observations, not a complete incident history. Existing process-local HPC plans and durable resolution memory have different lifetimes.
 
 [Detailed source contract](../OBSERVABILITY_MCP.md) · [Execution workflow](WORKFLOWS.md) · [Editable diagram source](diagrams/diagrams.json)
+
+The distributed `scripts/gysam_diagnostics.py` helper retains its existing Python-library boundary. Canonical operation spans use context tokens and one process-shared stderr handler; this does not create a collector, background queue, deployment resource or new application service. Importing the helper alone does not instrument the MCP adapter. [Helper contract and infrastructure ownership](DIAGNOSTIC_TERMINAL_SINK.md).

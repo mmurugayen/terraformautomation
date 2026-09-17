@@ -50,5 +50,16 @@
     "evidence": "docs/validation/recovery-identity-2026-09-16.json",
     "status": "source_implemented_qualification_pending",
     "remaining": "Required CI for the proposed revision and configured live-backend qualification; parent acceptance remains unchanged."
+  },
+  "diagnostic_terminal_sink_increment": {
+    "status": "source_implemented_qualification_pending",
+    "implementation": [
+      "scripts/gysam_diagnostics.py",
+      "tests/test_operation_outcomes.py",
+      "tests/test_operation_span_contract.py",
+      "tests/test_diagnostic_sink_recovery.py"
+    ],
+    "evidence": "docs/validation/diagnostic-terminal-sink-2026-09-17.json",
+    "remaining": "Current candidate CI and installed collector/retention/backpressure qualification; parent acceptance unchanged."
   }
 }
