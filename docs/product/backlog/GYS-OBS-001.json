@@ -61,5 +61,15 @@
     ],
     "evidence": "docs/validation/diagnostic-terminal-sink-2026-09-17.json",
     "remaining": "Current candidate CI and installed collector/retention/backpressure qualification; parent acceptance unchanged."
+  },
+  "bounded_reader_increment": {
+    "status": "source_implemented_qualification_pending",
+    "implementation": [
+      "scripts/gysam_observability.py",
+      "tests/test_observability_mcp.py"
+    ],
+    "evidence": "docs/validation/bounded-reader-2026-09-17.json",
+    "canonical_prerequisite": "https://github.com/mmurugayen/gysam-platform/pull/47",
+    "remaining": "Canonical source merge, complete candidate CI and installed source/collector qualification; parent acceptance unchanged."
   }
 }

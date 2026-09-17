@@ -37,3 +37,5 @@ Current guide maintenance: the [documentation audit](docs/current/DOCUMENTATION_
 [Recovery receipt integrity](docs/current/RECOVERY_IDENTITY.md) synchronizes the canonical plan/target/state checks and real HTTP regressions. Current CI and deployed-backend acceptance remain required.
 
 [Diagnostic terminal events and sink recovery](docs/current/DIAGNOSTIC_TERMINAL_SINK.md) synchronizes the canonical helper, documents bounded stderr interruption accounting, and records local wrapper measurements. [Infrastructure ownership](docs/current/DIAGNOSTIC_TERMINAL_SINK.md#infrastructure-and-configuration-ownership) identifies the product-owned deployment paths.
+
+The [bounded reader snapshot contract](docs/OBSERVABILITY_MCP.md#bounded-reader-snapshots) reports observed source changes and keeps malformed newline bursts within the checked allocation budget. Canonical Platform #47 merge and current consumer CI remain required.

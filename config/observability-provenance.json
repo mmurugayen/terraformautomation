@@ -4,11 +4,11 @@
   "canonical_repository": "mmurugayen/gysam-platform",
   "update_policy": "Review canonical changes, copy verbatim and refresh hashes together.",
   "sha256": {
-    "scripts/gysam_observability.py": "17750e03a9a5f37e69966fd7170d8e525d339abbbe5e9f68ecf8d5dceb30a7fc",
+    "scripts/gysam_observability.py": "0022c1fa9a48b1e6354d5ed6c2fb651aa591427e5029ed77493f8757db1bea76",
     "scripts/gysam_diagnostic_contract.py": "595410bf5d6487dc57591f2b55d61518a8da8eea9bd48473c99d7074b0d71fce",
     "scripts/gysam_diagnostics.py": "fd89621fd01b6c47e40e0c2cfb96ef8da114009d39091acab8af640c0a2777fc",
     "scripts/check_observability_coverage.py": "f1a3ae1247f049163b6e090c77e651811941f51abc99f96bb139e04654ef4ed1",
-    "tests/test_observability_mcp.py": "46b9a1ff500948f9e9d771944cc0a18d2eaff8c3986763b2e4cb6b7b1c2f6eb5",
+    "tests/test_observability_mcp.py": "ccbd488fdaf43c3c8c48a106cf3f023f4fe9e0e76b445618101de2de2b5451cd",
     "tests/test_operation_tracing.py": "071a47e456efb69da90511a31eb9753c1124559e844f9c48927841d5f45b5974",
     "tests/test_diagnostic_sink_recovery.py": "5fa9c3b2172d46e7d2aa020e4b53737fd40704b11d0127f1aeb2ce865235c9b2",
     "tests/test_operation_outcomes.py": "d47e7f83109edb2a4490960133e2e3e5fdd556c5e11e9caef92877554c26c859",
@@ -53,5 +53,20 @@
     "scope": "Bind read and apply receipts to the requested plan and exact configured target, validate recognized states, preserve uncertain effects without replay.",
     "evidence": "docs/validation/recovery-identity-2026-09-16.json",
     "qualification": "Local source contracts only; current-revision CI and installed backend qualification remain required."
+  },
+  "bounded_reader_increment": {
+    "date": "2026-09-17",
+    "canonical_repository": "mmurugayen/gysam-platform",
+    "reviewed_reader_commit": "1eaf5fd77721e8d226738d9c25d933e143168b52",
+    "canonical_pull_request": "https://github.com/mmurugayen/gysam-platform/pull/47",
+    "canonical_commit": "c2aade3bd28bd2d168763731cda21354b89ecb1f",
+    "consumer_merge_requires_canonical_merge": true,
+    "copied_verbatim": [
+      "scripts/gysam_observability.py",
+      "tests/test_observability_mcp.py"
+    ],
+    "scope": "Bound malformed-line allocations and observe source changes without claiming a complete snapshot; preserve receipt identity and transport behavior.",
+    "evidence": "docs/validation/bounded-reader-2026-09-17.json",
+    "qualification": "Local source contracts only; canonical merge, candidate CI and installed source/collector qualification remain required."
   }
 }
