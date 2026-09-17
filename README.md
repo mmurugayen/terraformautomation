@@ -29,3 +29,7 @@ python3 scripts/check_observability_coverage.py
 [Observability CI](.github/workflows/observability.yml) runs the utility contracts. [Feature acceptance](docs/product/backlog/GYS-OBS-001.md) tracks scope; [documentation validation](docs/current/VALIDATION.md) records checks actually run for this update.
 
 Current guide maintenance: the [documentation audit](docs/current/DOCUMENTATION_AUDIT.md) records source revisions and historical-document status. Validate editable diagrams with `python3 docs/current/diagrams/render.py --check`.
+
+## Deployment and operations planning
+
+[Nine shared deployment and operations requirements](docs/product/backlog/DEPLOYMENT_OPERATIONS_2026-09-17.md) and [blank deployment worksheets](docs/product/backlog/DEPLOYMENT_WORKSHEETS_2026-09-17.md) add 45 planned acceptance criteria tailored to this repository. These supplemental delivery/qualification refinements are not additional top-level product features. Existing IDs, counts, statuses and evidence are preserved; installed acceptance is **Not run** and go-live requires separate evidence and approval.

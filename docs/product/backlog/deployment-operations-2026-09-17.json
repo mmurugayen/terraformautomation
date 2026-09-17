@@ -1,0 +1,547 @@
+{
+  "schema_version": 1,
+  "repository": "mmurugayen/terraformautomation",
+  "requested_on": "2026-09-17",
+  "base_branch": "dev",
+  "base_commit": "d7d3b6b02465178c8fbcb11b07ae88839e4ef707",
+  "status": "Planned",
+  "acceptance_status": "Not run",
+  "provenance": "User-requested nine deployment/operations topics, tailored against the same-repository source snapshot.",
+  "counting": "Nine shared requirements projected by product. Product projections are not additive top-level features. Preserve all existing feature counts, IDs, states and evidence.",
+  "shared_requirement_count": 9,
+  "acceptance_criterion_count": 45,
+  "existing_catalog_counts_preserved": null,
+  "existing_records_policy": "Existing catalogs, IDs, owners, status, acceptance, history and feature counts are unchanged. These projections are supplemental delivery/qualification refinements.",
+  "product_boundary": "This repository implements diagnostic utilities and a scaffold for future infrastructure contracts. No Terraform resources, Ansible deployment or product runtime exists here. Package/module ownership and consumer qualification are documentation responsibilities, not additive product feature counts.",
+  "roles": "Local stdio/MCP utility and explicitly configured external backend; consuming infrastructure/product ownership must be assigned.",
+  "infrastructure_configuration_ownership": "Diagnostic package/interface only. Assign consuming Terraform/OpenTofu module and Ansible/configuration owners before execution; no such deployment runtime exists here.",
+  "constraints": [
+    "Source these requirements from the user's nine requested topics and same-repository records. Do not copy private code findings or operational details from another repository.",
+    "Tailor scope and acceptance to the local product. Native Slurm/head-node/compute administration belongs to HPC. Grid Engine retains its native scheduler. Other products document external integration only if explicitly selected and justified.",
+    "Map to existing local backlog IDs and source/doc paths. Where no canonical catalog exists, say so and use existing repository references; do not invent parent IDs.",
+    "Keep existing canonical feature IDs/counts, statuses, owners, historical evidence and issue states unchanged. This is a supplemental planned backlog; no implementation, native/site acceptance, HA, security, recovery or production readiness claim.",
+    "Use self-hosted, existing user-controlled infrastructure and existing free tools; preserve current PostgreSQL and storage choices per product. No paid services, new runtime dependencies or default cloud provisioning.",
+    "Keep shared nine IDs across product projections and use AC suffixes -AC1..-AC5. Criteria may be adapted to the product but Markdown and JSON must match exactly. Use all 45 IDs and record applicability explicitly.",
+    "Acceptance status stays Not run. Owners are proposed roles, with assignment pending. Planned per-repository docs/checklists do not authorize destructive installation, disk erasure, deployment or automated remediation.",
+    "Worksheets must use unfilled fields (TBD), secret references instead of secret values, and blank evidence/signoff. Never invent actual addresses, hardware, site names, credentials, deployment dates or measured RTO/RPO.",
+    "Update an existing backlog index or README with links and a truthful scope/count summary. Update any required documentation inventory without rewriting historical/canonical source copies.",
+    "Native acceptance and evidence for original requirements remain separate. Close documentation PR after eligible merge, not unfinished product acceptance issues."
+  ],
+  "requirements": [
+    {
+      "id": "GYS-DEPLOY-01",
+      "title": "Architecture and readiness planning",
+      "priority": "P0",
+      "depends_on": [],
+      "owner_role": "Product and deployment architecture owner",
+      "scope": "Plan supported product roles, control/data paths, capacity and prerequisites, and separate source capability from installed readiness.",
+      "acceptance": [
+        {
+          "id": "GYS-DEPLOY-01-AC1",
+          "text": "Record the intended topology, role boundaries, supported operating systems and hardware, storage/data ownership, environment limits and product-specific exclusions in a versioned architecture worksheet.",
+          "status": "Not run"
+        },
+        {
+          "id": "GYS-DEPLOY-01-AC2",
+          "text": "Record measurable capacity, latency, throughput, concurrency and resource budgets plus workload assumptions before tuning or acceptance; retain baseline evidence and avoid invented measurements.",
+          "status": "Not run"
+        },
+        {
+          "id": "GYS-DEPLOY-01-AC3",
+          "text": "Validate prerequisite identity, DNS/time synchronization, storage capacity, network access, package/driver rights, dependencies and operator authority; fail readiness for missing or inconsistent inputs.",
+          "status": "Not run"
+        },
+        {
+          "id": "GYS-DEPLOY-01-AC4",
+          "text": "Map each installation and operational capability to its existing backlog parent, Terraform/OpenTofu or infrastructure contract, Ansible or configuration contract, and required source/native/site evidence.",
+          "status": "Not run"
+        },
+        {
+          "id": "GYS-DEPLOY-01-AC5",
+          "text": "Record proposed delivery/operations owners, unresolved decisions, dependency order, change window and explicit review gates; a missing approval or failed prerequisite keeps readiness blocked.",
+          "status": "Not run"
+        }
+      ],
+      "status": "Planned",
+      "assignee": "Unassigned",
+      "acceptance_status": "Not run",
+      "product_scope": "Document the diagnostic package and consumer interfaces, host prerequisites and ownership. This repository has no Terraform resource/module catalog or product installer.",
+      "applicability": {
+        "classification": "Adapted to existing product role",
+        "reason": "Document the diagnostic package and consumer interfaces, host prerequisites and ownership. This repository has no Terraform resource/module catalog or product installer."
+      },
+      "parent_ids": [],
+      "parent_mapping_note": "No local product catalog covers this area. Use existing source/document contracts below and assign consuming package/module ownership before implementation; no parent ID is invented.",
+      "source_references": [
+        "README.md",
+        "docs/current/ARCHITECTURE.md",
+        "docs/OBSERVABILITY_MCP.md"
+      ],
+      "delivery_evidence": "Planned documentation/qualification work. Source revision, installed target, reviewer and measured evidence must be recorded; acceptance remains Not run.",
+      "worksheet_section": "Site, scope and readiness"
+    },
+    {
+      "id": "GYS-DEPLOY-02",
+      "title": "Network design and IP allocation",
+      "priority": "P0",
+      "depends_on": [
+        "GYS-DEPLOY-01"
+      ],
+      "owner_role": "Network and infrastructure owner",
+      "scope": "Create a reproducible address and connectivity plan for management, provisioning, data/storage and application paths that exist in this product.",
+      "acceptance": [
+        {
+          "id": "GYS-DEPLOY-02-AC1",
+          "text": "Complete an IPAM worksheet for each applicable interface or virtual endpoint with role, hostname, address family/prefix, subnet, gateway, VLAN, DNS, reservation method and owner; reserve virtual and provisioning addresses separately.",
+          "status": "Not run"
+        },
+        {
+          "id": "GYS-DEPLOY-02-AC2",
+          "text": "Validate address/prefix syntax, subnet and pool overlap, duplicate addresses, static/DHCP exclusions, routing and capacity; use actual site allocations only after operator review.",
+          "status": "Not run"
+        },
+        {
+          "id": "GYS-DEPLOY-02-AC3",
+          "text": "Define required inbound/outbound ports, trust zones, administrative access, routing, DNS and time dependencies; deny unrelated traffic and keep out-of-band management isolated where present.",
+          "status": "Not run"
+        },
+        {
+          "id": "GYS-DEPLOY-02-AC4",
+          "text": "Validate connectivity, name resolution, configured MTU and relevant throughput/latency between each required role, including failure and rollback behavior, without exposing private endpoint values in diagnostic evidence.",
+          "status": "Not run"
+        },
+        {
+          "id": "GYS-DEPLOY-02-AC5",
+          "text": "Version and review address changes, VIP moves and firewall/routing updates; prove conflict detection and rollback before any live allocation, and record unsupported address families explicitly.",
+          "status": "Not run"
+        }
+      ],
+      "status": "Planned",
+      "assignee": "Unassigned",
+      "acceptance_status": "Not run",
+      "product_scope": "Document fixed local log sources and optional backend networking, approved aliases, TLS/DNS/time and redaction; IP allocation belongs to the consuming infrastructure owner.",
+      "applicability": {
+        "classification": "Adapted to existing product role",
+        "reason": "Document fixed local log sources and optional backend networking, approved aliases, TLS/DNS/time and redaction; IP allocation belongs to the consuming infrastructure owner."
+      },
+      "parent_ids": [],
+      "parent_mapping_note": "No local product catalog covers this area. Use existing source/document contracts below and assign consuming package/module ownership before implementation; no parent ID is invented.",
+      "source_references": [
+        "README.md",
+        "docs/current/ARCHITECTURE.md",
+        "docs/OBSERVABILITY_MCP.md"
+      ],
+      "delivery_evidence": "Planned documentation/qualification work. Source revision, installed target, reviewer and measured evidence must be recorded; acceptance remains Not run.",
+      "worksheet_section": "Network and IP allocation"
+    },
+    {
+      "id": "GYS-DEPLOY-03",
+      "title": "Head-node installation",
+      "priority": "P0",
+      "depends_on": [
+        "GYS-DEPLOY-01",
+        "GYS-DEPLOY-02"
+      ],
+      "owner_role": "Product installation owner",
+      "scope": "For HPC install the head/control node; for other products qualify their existing control-service, management-node or local application role without introducing a cluster.",
+      "acceptance": [
+        {
+          "id": "GYS-DEPLOY-03-AC1",
+          "text": "Record the existing role (Local stdio/MCP utility and explicitly configured external backend; consuming infrastructure/product ownership must be assigned.) and mark native HPC head-node installation not applicable; document supported OS/firmware/storage and recovery prerequisites for the selected role.",
+          "status": "Not run"
+        },
+        {
+          "id": "GYS-DEPLOY-03-AC2",
+          "text": "Verify immutable installation/source/package identities and compatibility before execution, keep credentials out of images and logs, and obtain role-specific authority before destructive or privileged steps.",
+          "status": "Not run"
+        },
+        {
+          "id": "GYS-DEPLOY-03-AC3",
+          "text": "Qualify repeatable bootstrap of required identity, time, storage, database, service configuration, access controls and bounded diagnostics using the existing infrastructure/configuration ownership.",
+          "status": "Not run"
+        },
+        {
+          "id": "GYS-DEPLOY-03-AC4",
+          "text": "Exercise a clean install, idempotent rerun, interrupted/resumed install and failed prerequisite on a supported target; preserve prior working state and produce bounded evidence of the failed stage.",
+          "status": "Not run"
+        },
+        {
+          "id": "GYS-DEPLOY-03-AC5",
+          "text": "Verify service health and authorized administrative access after installation, then record source/configuration identity, operator handoff and tested rollback; source-only installation tests cannot mark installed readiness complete.",
+          "status": "Not run"
+        }
+      ],
+      "status": "Planned",
+      "assignee": "Unassigned",
+      "acceptance_status": "Not run",
+      "product_scope": "Native head-node installation is not applicable. Qualify the utility package/configuration on an existing host and identify external bootstrap ownership separately.",
+      "applicability": {
+        "classification": "Adapted to existing product role",
+        "reason": "Native head-node installation is not applicable. Qualify the utility package/configuration on an existing host and identify external bootstrap ownership separately.",
+        "native_head_node": "Not applicable; qualify the existing local/service role"
+      },
+      "parent_ids": [],
+      "parent_mapping_note": "No local product catalog covers this area. Use existing source/document contracts below and assign consuming package/module ownership before implementation; no parent ID is invented.",
+      "source_references": [
+        "README.md",
+        "docs/current/ARCHITECTURE.md",
+        "docs/OBSERVABILITY_MCP.md"
+      ],
+      "delivery_evidence": "Planned documentation/qualification work. Source revision, installed target, reviewer and measured evidence must be recorded; acceptance remains Not run.",
+      "worksheet_section": "Head/control/management installation"
+    },
+    {
+      "id": "GYS-DEPLOY-04",
+      "title": "High availability",
+      "priority": "P1",
+      "depends_on": [
+        "GYS-DEPLOY-01",
+        "GYS-DEPLOY-02",
+        "GYS-DEPLOY-03"
+      ],
+      "owner_role": "Availability and data owner",
+      "scope": "Define an explicitly supported topology and qualify recovery. A single-instance product must not be described as HA; optional HA needs a separate supported design.",
+      "acceptance": [
+        {
+          "id": "GYS-DEPLOY-04-AC1",
+          "text": "Declare supported single-instance, active/passive or active/active topology and each stateful dependency; where HA is unsupported, record the limitation and operator-approved recovery approach.",
+          "status": "Not run"
+        },
+        {
+          "id": "GYS-DEPLOY-04-AC2",
+          "text": "Only for a separately approved HA design, specify leadership/quorum, fencing or equivalent ownership exclusion, endpoint movement and data consistency. Otherwise record why these mechanisms are not applicable to the selected topology; no HA pass is implied.",
+          "status": "Not run"
+        },
+        {
+          "id": "GYS-DEPLOY-04-AC3",
+          "text": "Set reviewed RTO, RPO and workload/session safety requirements before trials; define how progress, jobs, commands and durable state survive a role or dependency failure.",
+          "status": "Not run"
+        },
+        {
+          "id": "GYS-DEPLOY-04-AC4",
+          "text": "For the supported single-host/package topology, inject process and host/dependency outages and measure isolated restoration and state/permission outcomes against predeclared objectives; do not label restoration as HA failover.",
+          "status": "Not run"
+        },
+        {
+          "id": "GYS-DEPLOY-04-AC5",
+          "text": "Exercise return to the last qualified single-host/package configuration and verify ownership and unresolved incidents. Record native HA as not applicable with its reason; future HA requires a separately approved design and trials.",
+          "status": "Not run"
+        }
+      ],
+      "status": "Planned",
+      "assignee": "Unassigned",
+      "acceptance_status": "Not run",
+      "product_scope": "Native HA ownership is not applicable to this utility. Record process availability and bounded evidence; optional backend HA belongs to its external owner.",
+      "applicability": {
+        "classification": "Adapted to existing product role",
+        "reason": "Native HA ownership is not applicable to this utility. Record process availability and bounded evidence; optional backend HA belongs to its external owner.",
+        "default_topology": "Single instance unless a separately supported design is selected; no HA claim",
+        "native_ha": "Not applicable to current single-host/package topology"
+      },
+      "parent_ids": [],
+      "parent_mapping_note": "No local product catalog covers this area. Use existing source/document contracts below and assign consuming package/module ownership before implementation; no parent ID is invented.",
+      "source_references": [
+        "README.md",
+        "docs/current/ARCHITECTURE.md",
+        "docs/OBSERVABILITY_MCP.md"
+      ],
+      "delivery_evidence": "Planned documentation/qualification work. Source revision, installed target, reviewer and measured evidence must be recorded; acceptance remains Not run.",
+      "worksheet_section": "Availability and failure recovery"
+    },
+    {
+      "id": "GYS-DEPLOY-05",
+      "title": "Software images and compute-node provisioning",
+      "priority": "P1",
+      "depends_on": [
+        "GYS-DEPLOY-01",
+        "GYS-DEPLOY-02",
+        "GYS-DEPLOY-03",
+        "GYS-DEPLOY-07"
+      ],
+      "owner_role": "Image and provisioning owner",
+      "scope": "HPC qualifies compute images and node provisioning; other products qualify their existing signed/verified package, service, worker or endpoint distribution without inventing compute ownership.",
+      "acceptance": [
+        {
+          "id": "GYS-DEPLOY-05-AC1",
+          "text": "Define versioned image or package profiles with OS/architecture, kernel, drivers, dependencies, hardware requirements, source digests and approved license/redistribution constraints for the applicable product role.",
+          "status": "Not run"
+        },
+        {
+          "id": "GYS-DEPLOY-05-AC2",
+          "text": "Verify provenance and integrity before provisioning, inject unique node/device identity and secret references at deployment time, and reject altered artifacts or images containing reusable credentials.",
+          "status": "Not run"
+        },
+        {
+          "id": "GYS-DEPLOY-05-AC3",
+          "text": "Qualify the selected provisioning mechanism and address/inventory mapping on a canary target; validate disk/device selection and require explicit approval for destructive operations.",
+          "status": "Not run"
+        },
+        {
+          "id": "GYS-DEPLOY-05-AC4",
+          "text": "Exercise repeatable provisioning, bounded batches, partial failure, resume and rollback while preserving existing workloads and prior qualified images; require drain/maintenance where the local role owns active work.",
+          "status": "Not run"
+        },
+        {
+          "id": "GYS-DEPLOY-05-AC5",
+          "text": "Record per-node/device or package deployment identity, observed health, drift and retirement state, and prove compatibility of the installed artifact with the applicable control service before wider rollout.",
+          "status": "Not run"
+        }
+      ],
+      "status": "Planned",
+      "assignee": "Unassigned",
+      "acceptance_status": "Not run",
+      "product_scope": "Qualify diagnostic package identity and configuration delivery only. No compute images, disk provisioning or Terraform apply exist here; assign a consumer module owner first.",
+      "applicability": {
+        "classification": "Adapted to existing product role",
+        "reason": "Qualify diagnostic package identity and configuration delivery only. No compute images, disk provisioning or Terraform apply exist here; assign a consumer module owner first.",
+        "native_compute_provisioning": "Not applicable; qualify existing package/worker/endpoint distribution"
+      },
+      "parent_ids": [],
+      "parent_mapping_note": "No local product catalog covers this area. Use existing source/document contracts below and assign consuming package/module ownership before implementation; no parent ID is invented.",
+      "source_references": [
+        "README.md",
+        "docs/current/ARCHITECTURE.md",
+        "docs/OBSERVABILITY_MCP.md"
+      ],
+      "delivery_evidence": "Planned documentation/qualification work. Source revision, installed target, reviewer and measured evidence must be recorded; acceptance remains Not run.",
+      "worksheet_section": "Images, packages and provisioning"
+    },
+    {
+      "id": "GYS-DEPLOY-06",
+      "title": "Slurm validation",
+      "priority": "P1",
+      "depends_on": [
+        "GYS-DEPLOY-01",
+        "GYS-DEPLOY-02",
+        "GYS-DEPLOY-03",
+        "GYS-DEPLOY-05",
+        "GYS-DEPLOY-07"
+      ],
+      "owner_role": "HPC scheduler owner or selected integration owner",
+      "scope": "HPC owns native Slurm acceptance. Other products mark native Slurm administration out of scope; qualify only an explicitly selected external adapter. Never replace Grid Engine's scheduler.",
+      "acceptance": [
+        {
+          "id": "GYS-DEPLOY-06-AC1",
+          "text": "Record native Slurm administration as not applicable to this product, with the product-specific reason and current execution authority. External Slurm integration is opt-in and requires an approved design before adding an adapter.",
+          "status": "Not run"
+        },
+        {
+          "id": "GYS-DEPLOY-06-AC2",
+          "text": "If an external Slurm integration is explicitly selected and approved: For applicable native or integration targets, verify exact scheduler/configuration identity, authentication, node/partition visibility, accounting dependencies and current health; stale or simulated observations cannot satisfy native readiness. Otherwise retain a justified not-applicable disposition; do not report native scheduler trials as passed.",
+          "status": "Not run"
+        },
+        {
+          "id": "GYS-DEPLOY-06-AC3",
+          "text": "If an external Slurm integration is explicitly selected and approved: Exercise authorized CPU and, where supported, GPU/GRES job submission, resource/account/QoS limits, isolation, accounting and completion on the actual target; record unsupported cases explicitly. Otherwise retain a justified not-applicable disposition; do not report native scheduler trials as passed.",
+          "status": "Not run"
+        },
+        {
+          "id": "GYS-DEPLOY-06-AC4",
+          "text": "If an external Slurm integration is explicitly selected and approved: Exercise unauthorized requests, node drain/rejoin, controller or adapter interruption, timeout/cancellation and recovery while preserving active jobs, ownership and bounded diagnostics. Otherwise retain a justified not-applicable disposition; do not report native scheduler trials as passed.",
+          "status": "Not run"
+        },
+        {
+          "id": "GYS-DEPLOY-06-AC5",
+          "text": "If an external Slurm integration is explicitly selected and approved: Measure applicable submission/status/accounting latency and load/soak behavior against predeclared budgets, retain revision/environment-bound evidence, and leave native acceptance open until those trials pass. Otherwise retain a justified not-applicable disposition; do not report native scheduler trials as passed.",
+          "status": "Not run"
+        }
+      ],
+      "status": "Planned",
+      "assignee": "Unassigned",
+      "acceptance_status": "Not run",
+      "product_scope": "Native Slurm is not applicable to diagnostic tooling. A selected external integration may supply bounded observations but confers no scheduler administration.",
+      "applicability": {
+        "classification": "Native Slurm not applicable",
+        "reason": "Native Slurm is not applicable to diagnostic tooling. A selected external integration may supply bounded observations but confers no scheduler administration.",
+        "external_integration": "Opt-in only; not selected or implemented by this backlog"
+      },
+      "parent_ids": [],
+      "parent_mapping_note": "No local product catalog covers this area. Use existing source/document contracts below and assign consuming package/module ownership before implementation; no parent ID is invented.",
+      "source_references": [
+        "README.md",
+        "docs/current/ARCHITECTURE.md",
+        "docs/OBSERVABILITY_MCP.md"
+      ],
+      "delivery_evidence": "Planned documentation/qualification work. Source revision, installed target, reviewer and measured evidence must be recorded; acceptance remains Not run.",
+      "worksheet_section": "Scheduler and Slurm applicability"
+    },
+    {
+      "id": "GYS-DEPLOY-07",
+      "title": "Security hardening",
+      "priority": "P0",
+      "depends_on": [
+        "GYS-DEPLOY-01",
+        "GYS-DEPLOY-02"
+      ],
+      "owner_role": "Product security and operations owner",
+      "scope": "Qualify the existing local trust boundaries and product-specific access/privacy protections without weakening supported behavior or adding a new security service.",
+      "acceptance": [
+        {
+          "id": "GYS-DEPLOY-07-AC1",
+          "text": "Document a threat and trust-boundary review for installation, administration, application traffic, stored data, agents/workers and dependencies; map findings to existing security requirements and assigned remediation roles.",
+          "status": "Not run"
+        },
+        {
+          "id": "GYS-DEPLOY-07-AC2",
+          "text": "Qualify least-privilege service identities, administrative authentication, role/tenant or device scope, secure remote access, certificate/key lifecycle and secret-reference handling on the supported installation.",
+          "status": "Not run"
+        },
+        {
+          "id": "GYS-DEPLOY-07-AC3",
+          "text": "Apply reviewed host/service hardening and minimal network exposure using existing configuration ownership; verify updates, dependency provenance and relevant vulnerability/secret checks without disabling required protections.",
+          "status": "Not run"
+        },
+        {
+          "id": "GYS-DEPLOY-07-AC4",
+          "text": "Exercise denied access, revoked credentials/certificates, unauthorized configuration, malformed inputs and private-data redaction; diagnostics must remain bounded and must not contain secrets or customer payloads.",
+          "status": "Not run"
+        },
+        {
+          "id": "GYS-DEPLOY-07-AC5",
+          "text": "Record hardening profile identity, evidence, residual exceptions, accountable approval and remediation expiry; failed checks or unapproved exceptions block go-live.",
+          "status": "Not run"
+        }
+      ],
+      "status": "Planned",
+      "assignee": "Unassigned",
+      "acceptance_status": "Not run",
+      "product_scope": "Qualify fixed-source access, bounded JSON/MCP, secret references, backend authorization and redaction within the existing GYS-OBS-001 boundary.",
+      "applicability": {
+        "classification": "Adapted to existing product role",
+        "reason": "Qualify fixed-source access, bounded JSON/MCP, secret references, backend authorization and redaction within the existing GYS-OBS-001 boundary."
+      },
+      "parent_ids": [
+        "GYS-OBS-001"
+      ],
+      "parent_mapping_note": "Existing local tasks remain authoritative; this projection refines qualification without changing their acceptance.",
+      "source_references": [
+        "README.md",
+        "docs/current/ARCHITECTURE.md",
+        "docs/OBSERVABILITY_MCP.md"
+      ],
+      "delivery_evidence": "Planned documentation/qualification work. Source revision, installed target, reviewer and measured evidence must be recorded; acceptance remains Not run.",
+      "worksheet_section": "Security hardening"
+    },
+    {
+      "id": "GYS-DEPLOY-08",
+      "title": "Backup, upgrades, recovery, and troubleshooting",
+      "priority": "P0",
+      "depends_on": [
+        "GYS-DEPLOY-01",
+        "GYS-DEPLOY-03",
+        "GYS-DEPLOY-07"
+      ],
+      "owner_role": "Operations and recovery owner",
+      "scope": "Protect existing state and qualify operational changes, restore and diagnosis independently on each supported product/installation.",
+      "acceptance": [
+        {
+          "id": "GYS-DEPLOY-08-AC1",
+          "text": "Inventory authoritative state, configuration, keys via secret references, required evidence and ephemeral data; assign backup/retention/access ownership and reviewed RPO/RTO for each recoverable component.",
+          "status": "Not run"
+        },
+        {
+          "id": "GYS-DEPLOY-08-AC2",
+          "text": "Produce integrity-verified backups and rehearse restoration into an isolated target, including missing/corrupt data and ownership/permission checks; a successful backup command is not restore acceptance.",
+          "status": "Not run"
+        },
+        {
+          "id": "GYS-DEPLOY-08-AC3",
+          "text": "Qualify preflight, compatibility/migration checks, staged or canary upgrade, interrupted execution and rollback against immutable old/new artifacts; preserve supported data and active-work invariants.",
+          "status": "Not run"
+        },
+        {
+          "id": "GYS-DEPLOY-08-AC4",
+          "text": "Exercise representative outages and recovery runbooks with bounded correlated diagnostics, symptom-to-check guidance, escalation roles and safe collection/redaction; retain unresolved outcomes instead of auto-closing them.",
+          "status": "Not run"
+        },
+        {
+          "id": "GYS-DEPLOY-08-AC5",
+          "text": "Record measured restore/recovery outcomes, upgrade/rollback source identities, operator review and follow-up defects; repeat required recovery/soak gates before go-live or after material change.",
+          "status": "Not run"
+        }
+      ],
+      "status": "Planned",
+      "assignee": "Unassigned",
+      "acceptance_status": "Not run",
+      "product_scope": "Restore utility configuration and retained evidence per operator policy; backend recovery requires separately approved plans and verified receipts without blind replay.",
+      "applicability": {
+        "classification": "Adapted to existing product role",
+        "reason": "Restore utility configuration and retained evidence per operator policy; backend recovery requires separately approved plans and verified receipts without blind replay."
+      },
+      "parent_ids": [
+        "GYS-OBS-001"
+      ],
+      "parent_mapping_note": "Existing local tasks remain authoritative; this projection refines qualification without changing their acceptance.",
+      "source_references": [
+        "README.md",
+        "docs/current/ARCHITECTURE.md",
+        "docs/OBSERVABILITY_MCP.md"
+      ],
+      "delivery_evidence": "Planned documentation/qualification work. Source revision, installed target, reviewer and measured evidence must be recorded; acceptance remains Not run.",
+      "worksheet_section": "Backup, upgrade and troubleshooting"
+    },
+    {
+      "id": "GYS-DEPLOY-09",
+      "title": "Deployment worksheets and go-live checklists",
+      "priority": "P0",
+      "depends_on": [
+        "GYS-DEPLOY-01",
+        "GYS-DEPLOY-02",
+        "GYS-DEPLOY-03",
+        "GYS-DEPLOY-04",
+        "GYS-DEPLOY-05",
+        "GYS-DEPLOY-06",
+        "GYS-DEPLOY-07",
+        "GYS-DEPLOY-08"
+      ],
+      "owner_role": "Release and site acceptance owner",
+      "scope": "Provide reusable blank worksheets and a fail-closed go-live decision tied to actual product scope and native evidence.",
+      "acceptance": [
+        {
+          "id": "GYS-DEPLOY-09-AC1",
+          "text": "Provide versioned worksheets for site/role inventory, network/IP allocations, installation/configuration identity, availability topology, image/package rollout, applicable scheduler validation, hardening and recovery.",
+          "status": "Not run"
+        },
+        {
+          "id": "GYS-DEPLOY-09-AC2",
+          "text": "For every applicable requirement record proposed/assigned owner, acceptance evidence reference, revision/environment identity, result and unresolved defect; explicitly justify non-applicable items rather than treating them as passing.",
+          "status": "Not run"
+        },
+        {
+          "id": "GYS-DEPLOY-09-AC3",
+          "text": "Define go/no-go rules covering completed required CI, current reviewed source/configuration, installed/native acceptance, security exceptions, capacity/performance, backup restore, rollback and operator readiness.",
+          "status": "Not run"
+        },
+        {
+          "id": "GYS-DEPLOY-09-AC4",
+          "text": "Require accountable release/site approval, a maintenance and rollback window, communication/escalation ownership and post-deployment observation criteria; blank approvals or missing/failed/stale evidence mean no-go.",
+          "status": "Not run"
+        },
+        {
+          "id": "GYS-DEPLOY-09-AC5",
+          "text": "Record post-go-live health, retained evidence, unresolved backlog and handover ownership; merge/closure of this documentation change must not close unvalidated implementation or product-acceptance requirements.",
+          "status": "Not run"
+        }
+      ],
+      "status": "Planned",
+      "assignee": "Unassigned",
+      "acceptance_status": "Not run",
+      "product_scope": "Provide package/module-interface handoff with consumer owner, source/configuration identity and N/A reasons; infrastructure deliverables are not new product features.",
+      "applicability": {
+        "classification": "Adapted to existing product role",
+        "reason": "Provide package/module-interface handoff with consumer owner, source/configuration identity and N/A reasons; infrastructure deliverables are not new product features."
+      },
+      "parent_ids": [],
+      "parent_mapping_note": "No local product catalog covers this area. Use existing source/document contracts below and assign consuming package/module ownership before implementation; no parent ID is invented.",
+      "source_references": [
+        "README.md",
+        "docs/current/ARCHITECTURE.md",
+        "docs/OBSERVABILITY_MCP.md"
+      ],
+      "delivery_evidence": "Planned documentation/qualification work. Source revision, installed target, reviewer and measured evidence must be recorded; acceptance remains Not run.",
+      "worksheet_section": "Go-live and handover"
+    }
+  ],
+  "worksheets": "docs/product/backlog/DEPLOYMENT_WORKSHEETS_2026-09-17.md",
+  "go_live_default": "NO-GO until required reviewed CI, installed/native evidence and accountable approvals are complete."
+}
