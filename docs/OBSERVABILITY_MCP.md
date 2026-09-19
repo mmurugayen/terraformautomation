@@ -159,3 +159,7 @@ A read stops at the size observed when the file was opened; appended bytes wait 
 This detects observed metadata changes; it does not lock the source, create an immutable snapshot or guarantee the file remains unchanged after the final check. Treat a changed window as partial evidence, narrow the investigation and requery through the configured source. Do not automatically replay a recovery action or broaden filesystem access to compensate. Configuration, collectors, credentials and infrastructure ownership are unchanged.
 
 The synchronized reader and 25-test MCP module come from the combined [canonical Platform review #47](https://github.com/mmurugayen/gysam-platform/pull/47); source commit `aa6dab4c5abe621e8abed7d96a680680d9f0fe7a` preserves the reviewed reader bytes. Consumers require that canonical merge and their own candidate CI. [Reader validation](validation/bounded-reader-2026-09-17.json) records baseline failures, exact source hashes and the composed suite.
+
+### Diagnostic selector identity lengths
+
+Search and investigation selectors accept the same 1–96-character ASCII letters, digits, dot, underscore and hyphen identities retained by diagnostic normalization. This includes longer job, operation and correlation IDs already present in sanitized records. Recovery apply plan IDs retain their existing 64-character limit; this read-side correction does not broaden mutation authorization.
