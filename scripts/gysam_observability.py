@@ -147,23 +147,39 @@ class NoRedirect(HTTPRedirectHandler):
 
 class Backend:
     def __init__(self, config):
+        self.url, self.token_env = self.validate_config(config)
         self.config = config
-        parts = urlsplit(config['url'])
+        self.opener = build_opener(ProxyHandler({}), NoRedirect())
+
+    @staticmethod
+    def validate_config(config):
+        if not isinstance(config, dict):
+            raise ValueError('invalid_backend_configuration')
+        url = config.get('url')
+        if (not isinstance(url, str) or not url or len(url) > 4096 or '\\' in url
+                or any(c.isspace() or ord(c) < 32 or ord(c) == 127 for c in url)):
+            raise ValueError('invalid_backend_url')
+        if 'allow_local_http' in config and type(config['allow_local_http']) is not bool:
+            raise ValueError('invalid_local_http_setting')
+        try:
+            parts = urlsplit(url)
+            port = parts.port
+        except ValueError:
+            raise ValueError('invalid_backend_url') from None
         local = parts.hostname == 'localhost'
         try:
             local = local or ipaddress.ip_address(parts.hostname or '').is_loopback
         except ValueError:
             local = parts.hostname == 'localhost'
-        if (parts.username or parts.password or parts.query or parts.fragment
+        if (parts.username is not None or parts.password is not None or '?' in url or '#' in url
                 or parts.path not in ('', '/') or not parts.hostname
+                or parts.netloc.endswith(':') or (port is not None and not 1 <= port <= 65535)
                 or (parts.scheme != 'https' and not (parts.scheme == 'http' and local and config.get('allow_local_http') is True))):
             raise ValueError('invalid_backend_url')
         token_env = config.get('token_env', 'GYSAM_OBSERVABILITY_TOKEN')
         if not isinstance(token_env, str) or not re.fullmatch(r'[A-Z_][A-Z0-9_]{0,127}', token_env):
             raise ValueError('invalid_token_environment_name')
-        self.token_env = token_env
-        self.url = config['url'].rstrip('/')
-        self.opener = build_opener(ProxyHandler({}), NoRedirect())
+        return url.rstrip('/'), token_env
 
     def call(self, method, path, payload=None):
         token = os.environ.get(self.token_env, '')
@@ -221,8 +237,12 @@ class Backend:
 def load_config(path):
     path = Path(path).resolve()
     data = strict_json(bounded_file(path, 65536))
-    if not isinstance(data, dict) or data.get('schema_version') != 1:
+    if not isinstance(data, dict) or type(data.get('schema_version')) is not int or data['schema_version'] != 1:
         raise ValueError('invalid_configuration')
+    if 'enable_recovery' in data and type(data['enable_recovery']) is not bool:
+        raise ValueError('invalid_recovery_setting')
+    if data.get('backend') is not None:
+        Backend.validate_config(data['backend'])
     product = data.get('product')
     if not isinstance(product, str) or not NAME.fullmatch(product):
         raise ValueError('invalid_product')
@@ -266,7 +286,7 @@ class ObservabilityMCP:
     def __init__(self, config):
         self.config = config
         self.reader = LogReader(config.get('sources', []))
-        self.backend = Backend(config['backend']) if config.get('backend') else None
+        self.backend = Backend(config['backend']) if config.get('backend') is not None else None
         self.initialized = False
         self.ready = False
 

@@ -308,6 +308,58 @@ class ProtocolTests(unittest.TestCase):
             path.write_text(json.dumps({'schema_version': 1, 'product': 'test', 'sources': [{'id': 'runtime', 'path': 'events.jsonl'}]}))
             self.assertEqual(load_config(path)['sources'][0]['path'], Path(directory) / 'events.jsonl')
 
+    def test_backend_configuration_rejects_malformed_origins_before_io(self):
+        invalid = [None, [], 'https://example.invalid', {}, {'token_env': 'TOKEN'},
+                   {'url': None}, {'url': []}, {'url': True}, {'url': ''}]
+        invalid.extend({'url': url} for url in (
+            'https://example.invalid:', 'https://example.invalid:0',
+            'https://example.invalid:65536', 'https://example.invalid:abc',
+            'https://@example.invalid', 'https://example.invalid?secret',
+            'https://example.invalid#secret', 'https://example.invalid\n',
+            ' https://example.invalid', 'https://exam ple.invalid', 'https://example.invalid\\evil',
+            'https://[invalid]/'))
+        invalid.extend({'url': 'https://example.invalid', 'allow_local_http': flag}
+                       for flag in (None, 0, 1, 'true'))
+        for config in invalid:
+            with self.subTest(config=config), patch.object(adapter, 'build_opener') as opener:
+                with self.assertRaises(ValueError):
+                    Backend(config)
+                opener.assert_not_called()
+        for url in ('https://example.invalid', 'https://example.invalid:1',
+                    'https://example.invalid:65535', 'https://[::1]:443'):
+            with self.subTest(url=url):
+                self.assertEqual(Backend({'url': url}).url, url)
+
+    def test_loaded_configuration_rejects_boolean_versions_and_recovery_flags(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / 'config.json'
+            invalid = [{'schema_version': value} for value in (True, 1.0, '1', None)]
+            invalid.extend({'enable_recovery': value} for value in (None, 0, 1, 'true'))
+            invalid.extend({'backend': value} for value in (False, [], {}, {'token_env': 'TOKEN'}))
+            for fields in invalid:
+                with self.subTest(fields=fields):
+                    path.write_text(json.dumps({'schema_version': 1, 'product': 'test', **fields}))
+                    with self.assertRaises(ValueError):
+                        load_config(path)
+            for fields in ({}, {'backend': None}, {'enable_recovery': False},
+                           {'backend': {'url': 'https://example.invalid'}, 'enable_recovery': True}):
+                path.write_text(json.dumps({'schema_version': 1, 'product': 'test', **fields}))
+                load_config(path)
+
+    def test_invalid_backend_startup_is_sanitized_and_has_no_protocol_output(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / 'config.json'
+            for backend in ({'token_env': 'PRIVATE_VALUE'}, {'url': ['PRIVATE_VALUE']},
+                            {'url': 'https://example.invalid:65536'}):
+                with self.subTest(backend=backend):
+                    path.write_text(json.dumps({'schema_version': 1, 'product': 'test', 'backend': backend}))
+                    proc = subprocess.run([sys.executable, str(ROOT / 'scripts/gysam_observability.py'),
+                                           '--config', str(path)], input='', text=True,
+                                          capture_output=True, timeout=10)
+                    self.assertEqual(proc.returncode, 2)
+                    self.assertEqual(proc.stdout, '')
+                    self.assertEqual(proc.stderr, 'observability_configuration_unavailable\n')
+
 
 class RecoveryTransportTests(unittest.TestCase):
     @contextmanager
