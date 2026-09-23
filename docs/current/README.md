@@ -15,3 +15,8 @@ The source contains a diagnostic utility; no domain product or Terraform resourc
 Edit [diagrams.json](diagrams/diagrams.json), then run `python3 docs/current/diagrams/render.py`. Commit sources and generated SVGs together.
 
 Check reproducibility with `python3 docs/current/diagrams/render.py --check`. Architecture `units` contain components; workflow `nodes` describe actions and alternatives. Refresh the source commit after comparing implementation changes.
+
+## Deployment and operations planning
+
+- [Nine shared deployment/operations requirements](../product/backlog/DEPLOYMENT_OPERATIONS_2026-09-17.md) — planned refinements; original feature counts and acceptance unchanged.
+- [Deployment worksheets and go-live gates](../product/backlog/DEPLOYMENT_WORKSHEETS_2026-09-17.md) — blank target/evidence/signoff fields; default NO-GO.
