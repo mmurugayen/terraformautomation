@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-16",
+  "repository": "mmurugayen/terraformautomation",
+  "base_commit": "d7d3b6b02465178c8fbcb11b07ae88839e4ef707",
+  "canonical_source_commit": "774cb71a9e6856249c2c5386331103c1b16ef2e4",
+  "feature": "GYS-OBS-001",
+  "scope": "Standalone diagnostic/MCP recovery receipt validation",
+  "source_sha256": {
+    "scripts/gysam_observability.py": "17750e03a9a5f37e69966fd7170d8e525d339abbbe5e9f68ecf8d5dceb30a7fc",
+    "tests/test_observability_mcp.py": "46b9a1ff500948f9e9d771944cc0a18d2eaff8c3986763b2e4cb6b7b1c2f6eb5",
+    "tests/test_recovery_identity.py": "d6c0c5e97daae89004cb0bc3b8b1ed6c0fb80cda0ac213d76e6ae4de43efc96f"
+  },
+  "baseline_regression": {
+    "test_file": "tests/test_recovery_identity.py",
+    "methods": 4,
+    "failed_subcases": 19,
+    "scope": "Exact prechange adapter blob 6b5154b806be632da1f641752d38cb3eb1e1ac9e shared by both repositories; executed once against this identical source."
+  },
+  "candidate_validation": {
+    "python_tests": 30,
+    "failed": 0,
+    "skipped": 0,
+    "commands": [
+      {
+        "command": "python3 -m unittest discover -s tests -v",
+        "exit_code": 0,
+        "elapsed_seconds": 11.099,
+        "output": "test_fingerprint_tracks_code_and_revision_not_volatile_ids (test_observability_mcp.DiagnosticContractTests.test_fingerprint_tracks_code_and_revision_not_volatile_ids) ... ok\ntest_grouped_failures_keep_request_ids_and_never_claim_resolution (test_observability_mcp.DiagnosticContractTests.test_grouped_failures_keep_request_ids_and_never_claim_resolution) ... ok\ntest_invalid_schema_and_nonfinite_values (test_observability_mcp.DiagnosticContractTests.test_invalid_schema_and_nonfinite_values) ... ok\ntest_sensitive_payloads_and_prompt_text_are_discarded (test_observability_mcp.DiagnosticContractTests.test_sensitive_payloads_and_prompt_text_are_discarded) ... ok\ntest_backend_url_and_configuration_constraints (test_observability_mcp.ProtocolTests.test_backend_url_and_configuration_constraints) ... ok\ntest_extra_arguments_unknown_tools_and_notifications (test_observability_mcp.ProtocolTests.test_extra_arguments_unknown_tools_and_notifications) ... ok\ntest_lifecycle_tools_and_no_approval_tool (test_observability_mcp.ProtocolTests.test_lifecycle_tools_and_no_approval_tool) ... ok\ntest_stdio_subprocess_only_outputs_protocol_json (test_observability_mcp.ProtocolTests.test_stdio_subprocess_only_outputs_protocol_json) ... ok\ntest_cross_file_order_uses_timestamps (test_observability_mcp.ReaderTests.test_cross_file_order_uses_timestamps) ... ok\ntest_invalid_selector_cannot_be_a_path (test_observability_mcp.ReaderTests.test_invalid_selector_cannot_be_a_path) ... ok\ntest_named_pipe_is_rejected_without_waiting_for_a_writer (test_observability_mcp.ReaderTests.test_named_pipe_is_rejected_without_waiting_for_a_writer) ... ok\ntest_result_limit_missing_sources_and_service_filter (test_observability_mcp.ReaderTests.test_result_limit_missing_sources_and_service_filter) ... ok\ntest_search_is_scoped_and_non_json_records_are_counted (test_observability_mcp.ReaderTests.test_search_is_scoped_and_non_json_records_are_counted) ... ok\ntest_tail_is_bounded_and_partial_first_line_is_discarded (test_observability_mcp.ReaderTests.test_tail_is_bounded_and_partial_first_line_is_discarded) ... ok\ntest_apply_uses_existing_approval_and_configured_target (test_observability_mcp.RecoveryTransportTests.test_apply_uses_existing_approval_and_configured_target) ... ok\ntest_complete_fixed_length_and_chunked_apply_remain_functional (test_observability_mcp.RecoveryTransportTests.test_complete_fixed_length_and_chunked_apply_remain_functional) ... ok\ntest_incomplete_apply_never_reports_verified_or_replays (test_observability_mcp.RecoveryTransportTests.test_incomplete_apply_never_reports_verified_or_replays) ... ok\ntest_incomplete_approval_read_never_dispatches_apply (test_observability_mcp.RecoveryTransportTests.test_incomplete_approval_read_never_dispatches_apply) ... ok\ntest_invalid_mutation_response_is_uncertain_for_every_write_route (test_observability_mcp.RecoveryTransportTests.test_invalid_mutation_response_is_uncertain_for_every_write_route) ... ok\ntest_unapproved_plan_never_applies_and_redirect_never_forwards_credentials (test_observability_mcp.RecoveryTransportTests.test_unapproved_plan_never_applies_and_redirect_never_forwards_credentials) ... ok\ntest_async_cancellation_propagates_and_context_resets (test_operation_tracing.OperationTracingTests.test_async_cancellation_propagates_and_context_resets) ... ok\ntest_generator_lifetime_is_not_shortened (test_operation_tracing.OperationTracingTests.test_generator_lifetime_is_not_shortened) ... ok\ntest_nested_failure_has_parent_span_and_never_logs_arguments (test_operation_tracing.OperationTracingTests.test_nested_failure_has_parent_span_and_never_logs_arguments) ... ok\ntest_results_signatures_and_descriptors_are_preserved (test_operation_tracing.OperationTracingTests.test_results_signatures_and_descriptors_are_preserved) ... ok\ntest_success_is_debug_until_one_second (test_operation_tracing.OperationTracingTests.test_success_is_debug_until_one_second) ... ok\ntest_unsuccessful_adapter_result_is_visible_without_serializing_it (test_operation_tracing.OperationTracingTests.test_unsuccessful_adapter_result_is_visible_without_serializing_it) ... ok\ntest_apply_identity_or_target_mismatch_remains_uncertain_without_replay (test_recovery_identity.RecoveryIdentityTests.test_apply_identity_or_target_mismatch_remains_uncertain_without_replay) ... ok\ntest_invalid_read_state_is_not_reflected_or_used_for_dispatch (test_recovery_identity.RecoveryIdentityTests.test_invalid_read_state_is_not_reflected_or_used_for_dispatch) ... ok\ntest_valid_identity_preserves_verified_and_uncertain_states (test_recovery_identity.RecoveryIdentityTests.test_valid_identity_preserves_verified_and_uncertain_states) ... ok\ntest_wrong_or_missing_read_identity_never_dispatches_apply (test_recovery_identity.RecoveryIdentityTests.test_wrong_or_missing_read_identity_never_dispatches_apply) ... ok\n\n----------------------------------------------------------------------\nRan 30 tests in 11.002s\n\nOK\n"
+      },
+      {
+        "command": "python3 scripts/check_observability_coverage.py",
+        "exit_code": 0,
+        "elapsed_seconds": 0.031,
+        "output": "{\"feature\": \"GYS-OBS-001\", \"product\": \"terraformautomation\", \"source_files\": 4, \"provenance\": \"matched\", \"status\": \"passed\"}\n"
+      },
+      {
+        "command": "python3 docs/current/diagrams/render.py --check",
+        "exit_code": 0,
+        "elapsed_seconds": 0.03,
+        "output": "Checked 2 diagrams\n"
+      },
+      {
+        "command": "git diff --check",
+        "exit_code": 0,
+        "elapsed_seconds": 0.002,
+        "output": ""
+      }
+    ]
+  },
+  "remaining": [
+    "Current candidate self-hosted CI and independent review",
+    "Configured installed-backend authorization and recovery qualification"
+  ],
+  "acceptance_advanced": false
+}

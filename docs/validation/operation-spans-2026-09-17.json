@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "boundary": "Local no-op synchronous/async call with request/job context; INFO filtering, no sink I/O",
+  "measurement": "Repeated batch means; p95 is across batches, not individual request latency",
+  "python": "3.12.14",
+  "platform": "Linux",
+  "architecture": "x86_64",
+  "logical_cpus": 9,
+  "iterations_per_batch": 20000,
+  "repeats": 7,
+  "baseline_revision": "fc31637c2509249f28eee61ccc8217659a1ef249",
+  "source_sha256": {
+    "candidate": "fd89621fd01b6c47e40e0c2cfb96ef8da114009d39091acab8af640c0a2777fc",
+    "baseline": "dfd8e93f748c970a4c7914d31070b73e579d30b0356efbb2e4b347f3aaba377c"
+  },
+  "max_regression_percent": null,
+  "workloads": {
+    "sync": {
+      "candidate": {
+        "samples_ns_per_call": [
+          3256.3,
+          3145.76,
+          3143.46,
+          3080.53,
+          3179.72,
+          3061.77,
+          3099.97
+        ],
+        "median_ns_per_call": 3143.46,
+        "p95_batch_mean_ns_per_call": 3256.3
+      },
+      "baseline": {
+        "samples_ns_per_call": [
+          5447.01,
+          5427.28,
+          5486.17,
+          5791.71,
+          5534.36,
+          5405.19,
+          5509.38
+        ],
+        "median_ns_per_call": 5486.17,
+        "p95_batch_mean_ns_per_call": 5791.71
+      },
+      "median_change_percent": -42.7
+    },
+    "async": {
+      "candidate": {
+        "samples_ns_per_call": [
+          3276.4,
+          3189.13,
+          3192.35,
+          3294.91,
+          3139.1,
+          3338.4,
+          3284.46
+        ],
+        "median_ns_per_call": 3276.4,
+        "p95_batch_mean_ns_per_call": 3338.4
+      },
+      "baseline": {
+        "samples_ns_per_call": [
+          5766.37,
+          5601.67,
+          5554.7,
+          5564.65,
+          5556.21,
+          5708.1,
+          5632.74
+        ],
+        "median_ns_per_call": 5601.67,
+        "p95_batch_mean_ns_per_call": 5766.37
+      },
+      "median_change_percent": -41.51
+    }
+  },
+  "status": "measured"
+}
