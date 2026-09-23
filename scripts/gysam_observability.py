@@ -25,7 +25,10 @@ from gysam_diagnostic_contract import IDENTITY, NAME, SELECTORS, analyze, finger
 MAX_MESSAGE = 262144
 MAX_LINE = 16384
 MAX_SOURCE_BYTES = 2 * 1024 * 1024
+NONEMPTY_LINE = re.compile(rb'[^\n]+')
 PROTOCOLS = ('2025-11-25', '2025-06-18', '2025-03-26')
+PLAN_STATES = frozenset(('planned', 'approved', 'applying', 'simulated', 'verified',
+    'verification_required', 'failed', 'uncertain', 'rollback_requested'))
 
 
 def strict_json(raw):
@@ -76,7 +79,8 @@ class LogReader:
         for source in self.sources:
             rows = deque(maxlen=limit)
             rejected = 0
-            summary = {'source': source['id'], 'status': 'ready', 'truncated': False}
+            summary = {'source': source['id'], 'status': 'ready', 'truncated': False,
+                       'source_changed_during_read': False}
             try:
                 with open_regular(source['path']) as stream:
                     meta = os.fstat(stream.fileno())
@@ -84,19 +88,36 @@ class LogReader:
                         raise ValueError('regular_file_required')
                     offset = max(0, meta.st_size - MAX_SOURCE_BYTES)
                     stream.seek(offset)
-                    raw = stream.read(MAX_SOURCE_BYTES)
+                    expected = meta.st_size - offset
+                    raw = stream.read(expected)
+                    after = os.fstat(stream.fileno())
+                    changed = (meta.st_size != after.st_size or meta.st_mtime_ns != after.st_mtime_ns
+                               or meta.st_ctime_ns != after.st_ctime_ns or len(raw) != expected)
+                    try:
+                        current = os.stat(source['path'], follow_symlinks=False)
+                        changed = changed or (
+                            current.st_dev, current.st_ino, current.st_size,
+                            current.st_mtime_ns, current.st_ctime_ns) != (
+                            meta.st_dev, meta.st_ino, meta.st_size,
+                            meta.st_mtime_ns, meta.st_ctime_ns)
+                    except OSError:
+                        changed = True
+                    summary['source_changed_during_read'] = changed
                 summary['truncated'] = offset > 0
                 summary['incomplete_record'] = bool(raw and not raw.endswith(b'\n'))
-                if offset:
-                    raw = raw.partition(b'\n')[2]
-                # An incomplete writer record is not evidence until its newline arrives.
-                lines = raw.split(b'\n')[:-1]
-                for line in lines:
-                    if not line or len(line) > MAX_LINE:
+                # Iterate the bounded buffer without a split list or tail copy.
+                # Preserve empty-record rejection counts without allocating one
+                # Python object per newline in a malformed export burst.
+                end = raw.rfind(b'\n')
+                begin = raw.find(b'\n') + 1 if offset and end >= 0 else 0
+                rejected = raw.count(b'\n', begin, max(begin, end + 1))
+                for match in NONEMPTY_LINE.finditer(raw, begin, max(begin, end)):
+                    rejected -= 1
+                    if match.end() - match.start() > MAX_LINE:
                         rejected += 1
                         continue
                     try:
-                        row = normalize(strict_json(line))
+                        row = normalize(strict_json(match.group()))
                     except (ValueError, TypeError, UnicodeError, RecursionError, OverflowError):
                         rejected += 1
                         continue
@@ -116,7 +137,7 @@ class LogReader:
         return {'records': sorted(candidates, key=lambda x: x.get('timestamp', ''))[-limit:],
                 'sources': summaries, 'bounded_window': True,
                 'matched_records': matched, 'result_limited': matched > limit,
-                'window_complete': matched <= limit and all(s['status'] == 'ready' and not s['truncated'] and not s['rejected_records'] and not s.get('incomplete_record') for s in summaries)}
+                'window_complete': matched <= limit and all(s['status'] == 'ready' and not s['truncated'] and not s['rejected_records'] and not s.get('incomplete_record') and not s['source_changed_during_read'] for s in summaries)}
 
 
 class NoRedirect(HTTPRedirectHandler):
@@ -318,6 +339,9 @@ class ObservabilityMCP:
             if not IDENTITY.fullmatch(plan_id):
                 raise ValueError('invalid_plan_id')
             plan = self.backend.call('GET', 'automation/plans/' + plan_id)
+            if (plan.get('id') != plan_id or not isinstance(plan.get('state'), str)
+                    or plan['state'] not in PLAN_STATES):
+                raise ValueError('invalid_backend_response')
             if plan.get('target') not in self.config.get('targets', {}).values():
                 raise ValueError('plan_target_not_configured')
             if plan.get('state') != 'approved':
@@ -325,7 +349,12 @@ class ObservabilityMCP:
                         'reason': 'approved_plan_required'}
             result = self.backend.call('POST', 'automation/plans/' + plan_id + '/apply', {})
             plan_result = result.get('plan')
-            if not isinstance(plan_result, dict) or not isinstance(plan_result.get('state'), str):
+            # A valid response for a different plan/target is not this action's
+            # receipt. Preserve uncertainty after dispatch; never replay it.
+            if (not isinstance(plan_result, dict) or plan_result.get('id') != plan_id
+                    or plan_result.get('target') != plan['target']
+                    or not isinstance(plan_result.get('state'), str)
+                    or plan_result['state'] not in PLAN_STATES):
                 raise ValueError('backend_outcome_unknown')
             state = plan_result['state']
             return {'plan_id': plan_id, 'state': state, 'verified': state == 'verified',
