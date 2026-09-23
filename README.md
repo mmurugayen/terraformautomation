@@ -40,3 +40,7 @@ The [bounded reader snapshot contract](docs/OBSERVABILITY_MCP.md#bounded-reader-
 ## Mandatory logging and quality gates
 
 All existing and future implementation in this repository follows the [logging and code-quality standard](docs/LOGGING_AND_CODE_QUALITY.md). Run `python3 scripts/quality_gate.py` and the repository's complete test/qualification suite before review. Pull requests must include privacy-safe structured logging for changed functionality and must pass syntax, Ruff lint, and all existing required CI checks; missing runners, skipped jobs, or unavailable native environments are not passes.
+
+## Deployment and operations planning
+
+[Nine shared deployment and operations requirements](docs/product/backlog/DEPLOYMENT_OPERATIONS_2026-09-17.md) and [blank deployment worksheets](docs/product/backlog/DEPLOYMENT_WORKSHEETS_2026-09-17.md) add 45 planned acceptance criteria tailored to this repository. These supplemental delivery/qualification refinements are not additional top-level product features. Existing IDs, counts, statuses and evidence are preserved; installed acceptance is **Not run** and go-live requires separate evidence and approval.
