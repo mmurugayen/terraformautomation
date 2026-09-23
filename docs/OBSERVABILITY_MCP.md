@@ -140,3 +140,13 @@ a sink-capacity problem; a broken log sink cannot change an operation's result.
 Recovery requires complete HTTP framing before a backend response can be treated as evidence. The adapter rejects duplicate or conflicting length/transfer headers, invalid lengths, oversized bodies, truncated fixed-length or chunked responses, excessive JSON nesting and malformed apply-result objects. A rejected approval read does not dispatch the apply request. An unusable write response returns `backend_outcome_unknown`; reconcile the plan against the authoritative backend before another operator action. The client never retries the write automatically. Normal fixed-length, chunked and connection-close-delimited JSON responses remain supported.
 
 The existing 10-second socket timeout is an inactivity timeout; this correction does not claim a deadline for the complete exchange. Real local HTTP regression tests exercise framing failures and successful recovery. Installed-backend and target-device qualification remain separate.
+
+## Bounded reader snapshots
+
+The reader scans the bounded byte buffer without allocating a split-list entry for every newline. Rejection counts, service/selector filters, the 16 KiB line limit, 2 MiB per-source window and 200-result limit remain unchanged. Empty and oversized records remain rejected.
+
+A read stops at the size observed when the file was opened; appended bytes wait for a later query. Descriptor and final configured-path metadata checks detect observed append, truncate, rewrite, replacement/rotation or deletion during the read. Such a source reports `source_changed_during_read: true` and forces `window_complete: false`; already captured valid records remain available as partial evidence. A later stable query can recover.
+
+This detects observed metadata changes; it does not lock the source, create an immutable snapshot or guarantee the file remains unchanged after the final check. Treat a changed window as partial evidence, narrow the investigation and requery through the configured source. Do not automatically replay a recovery action or broaden filesystem access to compensate. Configuration, collectors, credentials and infrastructure ownership are unchanged.
+
+The synchronized reader and 25-test MCP module come from the combined [canonical Platform review #47](https://github.com/mmurugayen/gysam-platform/pull/47); source commit `aa6dab4c5abe621e8abed7d96a680680d9f0fe7a` preserves the reviewed reader bytes. Consumers require that canonical merge and their own candidate CI. [Reader validation](validation/bounded-reader-2026-09-17.json) records baseline failures, exact source hashes and the composed suite.
