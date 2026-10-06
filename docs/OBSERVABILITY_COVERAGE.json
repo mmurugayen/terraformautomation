@@ -31,6 +31,10 @@
         "class ObservabilityMCP"
       ]
     },
+    "scripts/implementation_status_gate.py": {
+      "boundary": "MCP protocol; no existing application runtime",
+      "direct_markers": []
+    },
     "scripts/quality_gate.py": {
       "boundary": "MCP protocol; no existing application runtime",
       "direct_markers": []
