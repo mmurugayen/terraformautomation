@@ -47,5 +47,38 @@ class OptionalCheckBoundsTests(unittest.TestCase):
 
 
 
+    def test_optional_check_success_and_failure_continue(self):
+        outcomes = [
+            subprocess.CompletedProcess(["bash"], 1, "", "syntax error"),
+            subprocess.CompletedProcess(["bash"], 0, "", ""),
+        ]
+        with patch.object(gate.shutil, "which", return_value="/bin/bash"), patch.object(
+            gate.subprocess, "run", side_effect=outcomes
+        ) as call:
+            errors = gate.run_optional(
+                ["bash", "-n"], [Path("bad.sh"), Path("good.sh")], "bash syntax"
+            )
+        self.assertEqual(len(errors), 1)
+        self.assertIn("bad.sh", errors[0])
+        self.assertEqual(call.call_count, 2)
+
+    def test_formatter_nonzero_exit_has_bounded_diagnostics(self):
+        failed = subprocess.CompletedProcess(["terraform"], 1, "x" * 10000, "")
+        with patch.object(gate.shutil, "which", side_effect=lambda name: "/usr/bin/terraform" if name == "terraform" else None), patch.object(
+            gate.subprocess, "run", return_value=failed
+        ):
+            errors = gate.validate_terraform([Path("main.tf")])
+        self.assertEqual(len(errors), 1)
+        self.assertLess(len(errors[0]), 2200)
+
+    def test_formatter_spawn_error_is_redacted(self):
+        with patch.object(gate.shutil, "which", side_effect=lambda name: "/usr/bin/terraform" if name == "terraform" else None), patch.object(
+            gate.subprocess, "run", side_effect=OSError("secret path")
+        ):
+            errors = gate.validate_terraform([Path("main.tf")])
+        self.assertIn("execution failed", errors[0])
+        self.assertNotIn("secret path", errors[0])
+
+
 if __name__ == "__main__":
     unittest.main()
