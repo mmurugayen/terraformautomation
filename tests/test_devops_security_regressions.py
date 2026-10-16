@@ -32,6 +32,14 @@ class SecurityRegressionTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             prometheus_summary({"status": "error"})
 
+    def test_readonly_bridge_rejects_recovery_configuration(self):
+        config = {"product": "terraformautomation", "sources": [],
+                  "backend": {"url": "https://example.com"},
+                  "devops": {"repository_aliases": {"primary": "owner/repo"},
+                             "metric_queries": {"health": "up"}}}
+        with self.assertRaisesRegex(ValueError, "readonly_backend_forbidden"):
+            DevOpsReadOnlyMCP(config, lambda repo: {}, lambda query: {})
+
     def test_bridge_does_not_register_write_tools(self):
         app = DevOpsReadOnlyMCP({
             "product": "terraformautomation", "sources": [],
