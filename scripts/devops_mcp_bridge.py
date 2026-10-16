@@ -15,7 +15,12 @@ ALIAS = {"type": "string", "maxLength": 96}
 class DevOpsReadOnlyMCP(ObservabilityMCP):
     def __init__(self, config, repository_reader, metric_reader):
         super().__init__(config)
-        self.catalog = ReadOnlyCatalog(config["devops"]["repositories"],
+        self.repository_aliases = config["devops"]["repository_aliases"]
+        if (not isinstance(self.repository_aliases, dict) or not self.repository_aliases
+                or any(not isinstance(k, str) or not k.isidentifier() or not isinstance(v, str)
+                       for k, v in self.repository_aliases.items())):
+            raise ValueError("invalid_repository_aliases")
+        self.catalog = ReadOnlyCatalog(list(self.repository_aliases.values()),
                                        config["devops"]["metric_queries"])
         if not callable(repository_reader) or not callable(metric_reader):
             raise ValueError("readers_required")
@@ -43,7 +48,10 @@ class DevOpsReadOnlyMCP(ObservabilityMCP):
         tool = next(item for item in self.tools() if item["name"] == name)
         self._arguments(tool, arguments)
         if name == "devops.github.repository":
-            target = self.catalog.repository(arguments["repository"])
+            alias = arguments["repository"]
+            if alias not in self.repository_aliases:
+                raise ValueError("repository_denied")
+            target = self.catalog.repository(self.repository_aliases[alias])
             result = github_summary(self.repository_reader(target))
         else:
             expression = self.catalog.metric(arguments["query_name"])
