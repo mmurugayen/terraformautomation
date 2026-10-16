@@ -40,6 +40,7 @@ class DevOpsReadOnlyMCP(ObservabilityMCP):
                 "annotations": {"readOnlyHint": True, "destructiveHint": False,
                                 "idempotentHint": True, "openWorldHint": True},
             })
+        logger.info("devops_tools_listed")
         return definitions
 
     def call(self, name, arguments):
