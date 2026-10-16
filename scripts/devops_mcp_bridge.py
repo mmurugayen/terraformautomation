@@ -14,6 +14,8 @@ ALIAS = {"type": "string", "maxLength": 96}
 
 class DevOpsReadOnlyMCP(ObservabilityMCP):
     def __init__(self, config, repository_reader, metric_reader):
+        if config.get("backend") or config.get("enable_recovery"):
+            raise ValueError("readonly_backend_forbidden")
         super().__init__(config)
         self.repository_aliases = config["devops"]["repository_aliases"]
         if (not isinstance(self.repository_aliases, dict) or not self.repository_aliases
