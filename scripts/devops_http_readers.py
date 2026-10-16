@@ -53,7 +53,10 @@ class ReadOnlyHTTP:
         logger.info("devops_http_client_configured")
 
     def get(self, path):
-        if not isinstance(path, str) or not path.startswith("/") or "://" in path:
+        if (not isinstance(path, str) or not path.startswith("/") or "://" in path
+                or any(ch in path for ch in ("\\r", "\\n", "#", "\\\\"))
+                or path.startswith("//") or "/../" in path or "/./" in path
+                or path.endswith(("/..", "/.")) or "%" in path.split("?", 1)[0]):
             raise ValueError("invalid_path")
         headers = {"Accept": "application/json", "User-Agent": "gysam-readonly-mcp"}
         if self.token_env:
