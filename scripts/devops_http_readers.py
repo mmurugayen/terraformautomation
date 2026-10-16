@@ -17,6 +17,7 @@ ENV_NAME = re.compile(r"[A-Z_][A-Z0-9_]{0,127}\Z")
 
 class NoRedirect(HTTPRedirectHandler):
     def redirect_request(self, req, fp, code, msg, headers, newurl):
+        logger.warning("devops_redirect_denied")
         raise ValueError("redirect_denied")
 
 
@@ -72,7 +73,9 @@ class ReadOnlyHTTP:
 
 def github_repository_reader(client):
     """Reader callback for an already allowlisted repository name."""
+    logger.info("github_reader_created")
     def read(repository):
+        logger.info("github_repository_read_requested")
         owner, name = repository.split("/")
         return client.get("/repos/" + quote(owner, safe="") + "/" + quote(name, safe=""))
     return read
@@ -80,6 +83,8 @@ def github_repository_reader(client):
 
 def prometheus_query_reader(client):
     """Reader callback for a pre-approved expression only."""
+    logger.info("prometheus_reader_created")
     def read(expression):
+        logger.info("prometheus_query_read_requested")
         return client.get("/api/v1/query?" + urlencode({"query": expression}))
     return read
