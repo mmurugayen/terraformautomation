@@ -6,7 +6,7 @@ import logging
 import re
 
 logger = logging.getLogger(__name__)
-NAME = re.compile(r"[A-Za-z0-9_.-]{1,100}\Z")
+NAME = re.compile(r"(?![.]{1,2}$)[A-Za-z0-9_.-]{1,100}$")
 
 
 class ReadOnlyCatalog:
