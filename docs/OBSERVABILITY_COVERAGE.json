@@ -15,6 +15,18 @@
       "boundary": "MCP protocol; no existing application runtime",
       "direct_markers": []
     },
+    "scripts/devops_http_readers.py": {
+      "boundary": "MCP protocol; no existing application runtime",
+      "direct_markers": []
+    },
+    "scripts/devops_mcp_bridge.py": {
+      "boundary": "MCP protocol; no existing application runtime",
+      "direct_markers": []
+    },
+    "scripts/devops_readonly_contract.py": {
+      "boundary": "MCP protocol; no existing application runtime",
+      "direct_markers": []
+    },
     "scripts/gysam_diagnostic_contract.py": {
       "boundary": "MCP protocol; no existing application runtime",
       "direct_markers": []
