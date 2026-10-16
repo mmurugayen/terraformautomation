@@ -54,7 +54,7 @@ class ReadOnlyHTTP:
 
     def get(self, path):
         if (not isinstance(path, str) or not path.startswith("/") or "://" in path
-                or any(ch in path for ch in ("\\r", "\\n", "#", "\\\\"))
+                or any(ch in path for ch in (chr(13), chr(10), "#", chr(92)))
                 or path.startswith("//") or "/../" in path or "/./" in path
                 or path.endswith(("/..", "/.")) or "%" in path.split("?", 1)[0]):
             raise ValueError("invalid_path")
