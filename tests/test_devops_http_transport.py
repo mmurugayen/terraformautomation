@@ -43,7 +43,9 @@ class TransportContractTests(TestCase):
 
     def test_invalid_paths_are_rejected(self):
         client = ReadOnlyHTTP("https://api.github.com", github=True)
-        for path in ("https://example.com", "repos/owner/repo", None):
+        for path in ("https://example.com", "repos/owner/repo", None, "//example.com",
+                     "/../admin", "/./admin", "/repos/%2e%2e/admin", "/repos/a#fragment",
+                     "/repos/a\\r\\nInjected:yes"):
             with self.subTest(path=path), self.assertRaises(ValueError):
                 client.get(path)
 
