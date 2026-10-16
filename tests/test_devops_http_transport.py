@@ -1,5 +1,4 @@
 """Offline HTTP transport tests: bounded responses and read-only requests."""
-import io
 import json
 import sys
 from pathlib import Path
