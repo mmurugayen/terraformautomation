@@ -15,6 +15,10 @@
       "boundary": "MCP protocol; no existing application runtime",
       "direct_markers": []
     },
+    "scripts/commercial_cleanup_audit.py": {
+      "boundary": "MCP protocol; no existing application runtime",
+      "direct_markers": []
+    },
     "scripts/gysam_diagnostic_contract.py": {
       "boundary": "MCP protocol; no existing application runtime",
       "direct_markers": []
